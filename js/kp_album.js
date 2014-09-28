@@ -26,13 +26,11 @@ $(function () {
 			$(".photo").children("*").remove();
 			$(".page_list").children("li").remove();
 			$("h2").remove();
-			var page_size =  10;
-			var page_link = 1;			
-			var total_pages;
-
 			//用jquery的get，將相簿API內的資料抓回來，並放到kp_album內
-			// do{
 			$.get(api_url+id+"?accessToken=kp5413b0a4013273.06245689", function(kp_album){		
+				var page_link = 1;			
+				var total_pages;
+				var page_size =  $(".pageSizeSelect").val();
 				total_pages = Math.ceil(kp_album.pageInfo.totalResults/page_size);
 				// $.get(api_url+id+"?accessToken=kp5413b0a4013273.06245689"+)
 				//印出相簿內所有的照片
@@ -42,7 +40,6 @@ $(function () {
 			// page+=1;
 				// for (page_link = 1; current_page < total_pages; page_link++) {
 				// 	$(".album_photo").append('<a class="page_'+page_link+' href="'+api_url+id+'?accessToken=kp5413b0a4013273.06245689&page='+current_page+'&page_size='+page_size+'">'+page_link+'</a>')
-				// };
 				$(".album_photo").prepend('<h2>'+kp_album.data.set.title+'</h2>');
 				for (var page = 0;page <total_pages; page++) {
 					// $(".page_list").append('<li class="col-md-1 page_link" href="'+api_url+id+'?accessToken=kp5413b0a4013273.06245689&page='+current_page+'&page_size='+page_size+'">'+page_link+'</li>');
@@ -59,17 +56,24 @@ $(function () {
 			
 			$(".photos").children("*").remove();
 			$current_page_link = $(this);
+			$(".page_list").children("li").remove();
 			$(".page_link").removeClass("pageLink_clicked");
 			$current_page_link.addClass("pageLink_clicked");
 			var current_page = $current_page_link.data("page-num");
-			var page_size =  10;	
-			var total_pages;
+			var page_size =  $(".pageSizeSelect").val();
 
 			$.get(api_url+id+'?accessToken=kp5413b0a4013273.06245689&page='+current_page+'&page_size='+page_size, function(kp_album){		
 				//印出相簿內所有的照片
+				var page_link = 1;
+				total_pages = Math.ceil(kp_album.pageInfo.totalResults/page_size);
 				$.each(kp_album.data.photos, function(index, value){
 					$(".photos").append('<li class="col-md-4 photo"><img class="img-rounded img-responsive" src="'+value.images.small+'"></li>')
 				})
+				for (var page = 0;page <total_pages; page++) {
+					// $(".page_list").append('<li class="col-md-1 page_link" href="'+api_url+id+'?accessToken=kp5413b0a4013273.06245689&page='+current_page+'&page_size='+page_size+'">'+page_link+'</li>');
+					$(".page_list").append('<li class="col-md-1 page_link" data-page-num="'+page+'">'+page_link+'</li>');
+					page_link= page_link+1;
+				};				
 			});			
 		});
 	}
