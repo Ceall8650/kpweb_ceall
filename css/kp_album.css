@@ -1,0 +1,24 @@
+.album_list li{
+    cursor: pointer;;
+    color: gray;
+}
+
+.album_list li:hover{
+    font-size: 1.2em;
+    color: black;
+}
+
+.clicked{
+    font-weight: bold;
+    color: red !important;
+}
+
+.album_photo li{
+    list-style: none;
+}
+
+
+.photo{
+	margin: 4px 0px;
+}
+
