@@ -21,10 +21,11 @@ $(function () {
 		$(".album_list").on("click",".album",function(){
 			var $album = $(this);
 			id = $album.data("id");
-			$(".album").removeClass("clicked");
-			$album.addClass("clicked");	
+			$(".album").removeClass("album_clicked");
+			$album.addClass("album_clicked");	
 			$(".photo").children("*").remove();
-			$(".page_list").children("*").remove();
+			$(".page_list").children("li").remove();
+			$("h2").remove();
 			var page_size =  10;
 			var page_link = 1;			
 			var total_pages;
@@ -42,21 +43,24 @@ $(function () {
 				// for (page_link = 1; current_page < total_pages; page_link++) {
 				// 	$(".album_photo").append('<a class="page_'+page_link+' href="'+api_url+id+'?accessToken=kp5413b0a4013273.06245689&page='+current_page+'&page_size='+page_size+'">'+page_link+'</a>')
 				// };
+				$(".album_photo").prepend('<h2>'+kp_album.data.set.title+'</h2>');
 				for (var page = 0;page <total_pages; page++) {
 					// $(".page_list").append('<li class="col-md-1 page_link" href="'+api_url+id+'?accessToken=kp5413b0a4013273.06245689&page='+current_page+'&page_size='+page_size+'">'+page_link+'</li>');
 					$(".page_list").append('<li class="col-md-1 page_link" data-page-num="'+page+'">'+page_link+'</li>');
 					page_link= page_link+1;
 				};
-				console.log($(".page_link").first().click());	
+				$(".page_link").first().click();	
 			});
 			// $(".page_link").click();	 重要!!!!   由於JavaScript具有unblocking的性質，故當for迴圈尚未執行完成時，就會先執行這行，故會發生找不到page_link類別的錯誤
 			// $(".album_photo").find(".page_link:first").css("color","red");
 		});
 
-		$(".album_photo").on("click",".page_link",function(){
+		$(".page_list").on("click",".page_link",function(){
+			
 			$(".photos").children("*").remove();
-
 			$current_page_link = $(this);
+			$(".page_link").removeClass("pageLink_clicked");
+			$current_page_link.addClass("pageLink_clicked");
 			var current_page = $current_page_link.data("page-num");
 			var page_size =  10;	
 			var total_pages;

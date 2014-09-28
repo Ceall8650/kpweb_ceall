@@ -1,3 +1,7 @@
+li{
+    list-style: none;
+}
+
 .album_list li{
     cursor: pointer;;
     color: gray;
@@ -8,17 +12,21 @@
     color: black;
 }
 
-.clicked{
+.album_clicked{
     font-weight: bold;
     color: red !important;
+    text-decoration: underline;
 }
 
-.album_photo li{
-    list-style: none;
+.pageLink_clicked{
+    font-weight: bold;
+    text-decoration: underline;
 }
-
 
 .photo{
 	margin: 4px 0px;
 }
 
+.page_link{
+    cursor: pointer;;	
+}

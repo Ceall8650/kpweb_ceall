@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">	
 	<link rel="stylesheet" type="text/css" href="css/kp_album.css">
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/kp_album.js"></script>	
 	<script src="bootstrap/js/bootstrap.js"></script>		
 </head>
@@ -39,8 +40,19 @@
 		</ul>
 		<ul class="album_photo col-md-8 ">
 			<div class="photos"></div>
-			<ul class="page_list col-md-offset-6 col-md-6"></ul>
 		</ul>
+		<div class="row">
+			<div class="col-md-3">
+				選擇顯示的圖片張數:
+				<select name="pageSizeSelect" class="pageSizeSelect">
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+				</select>
+			</div>			
+			<ul class="page_list col-md-3">
+			</ul>
+		</div>		
 	</div>
 </body>
 </html>
