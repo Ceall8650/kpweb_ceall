@@ -1,32 +1,31 @@
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
-.album_list li{
-    cursor: pointer;;
-    color: gray;
+.album_list li {
+  cursor: pointer;
+  color: gray;
+}
+.album_list li:hover {
+  font-size: 1.2em;
+  color: black;
 }
 
-.album_list li:hover{
-    font-size: 1.2em;
-    color: black;
+.album_clicked {
+  font-weight: bold;
+  color: green !important;
+  text-decoration: underline;
 }
 
-.album_clicked{
-    font-weight: bold;
-    color: red !important;
-    text-decoration: underline;
+.pageLink_clicked {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.pageLink_clicked{
-    font-weight: bold;
-    text-decoration: underline;
+.photo {
+  margin: 4px 0px;
 }
 
-.photo{
-	margin: 4px 0px;
-}
-
-.page_link{
-    cursor: pointer;;	
+.page_link {
+  cursor: pointer;
 }
