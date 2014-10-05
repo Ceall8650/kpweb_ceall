@@ -77,4 +77,8 @@ $(function () {
 			});			
 		});
 	}
+
+	$(".pageSizeSelect").on("change",function(){
+		$(".page_link").first().click();	
+	});
 })
